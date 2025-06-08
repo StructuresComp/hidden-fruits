@@ -23,8 +23,6 @@ The goal is to produce temporally‑aligned datasets for machine perception rese
 | **USB3 NIR camera** (e.g. Allied Vision Mako G‑031) | Captures monochrome images in the 850–940 nm range         |
 | (Optional) External IMU                             | Extra inertial data channel                                |
 
-A wiring diagram for the ESP32 ↔ Lepton stack is in [`hardware/esp32_lepton.svg`](hardware/esp32_lepton.svg).
-
 ---
 
 ## Repository layout
@@ -48,16 +46,7 @@ git clone --recurse-submodules https://github.com/Structures-Computers-Lab/hidde
 cd hidden-fruits
 ```
 
-Create a Python 3.10 environment and install host dependencies:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r jetson_capture/requirements.txt
-```
-
-> **Note**  The ZED SDK ≥ 4.1 must already be installed on the Jetson.
-
+Create a Python 3.10 environment and install host dependencies
 ### 2 · Flash the ESP32
 
 The firmware lives in `esp32_firmware/` and can be built with **PlatformIO** or the Arduino IDE:
@@ -70,10 +59,6 @@ pio run -e esp32-s3-dev -t upload
 The sketch configures HSPI, I²C and the VO‑SPI GPIOs, then begins streaming normalised 8‑bit frames (`0xFF 0xD8` header + 19 200 bytes) at \~8 Hz.
 
 ### 3 · Run a capture session
-
-```bash
-python jetson_capture/capture.py --frames 300 --out /media/scifruit/ANDY
-```
 
 Per‑frame artefacts are written to a timestamped folder:
 
@@ -140,7 +125,7 @@ Pull requests are welcome! Please run `pre-commit` hooks and conform to the exis
 ## Acknowledgements
 
 * [`ducky64/arduino-lepton`](https://github.com/ducky64/arduino-lepton) — base VO‑SPI driver on which the ESP32 sketch is built.
-* StereoLabs for their excellent open‑source ZED SDK samples.
+* StereoLabs for their open‑source ZED SDK samples.
 * Allied Vision Vimba SDK.
 
 ---
