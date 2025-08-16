@@ -130,4 +130,4 @@ Pull requests are welcome! Please run `pre-commit` hooks and conform to the exis
 
 ---
 
-*We’d love to see what you build with Hidden Fruits — tag @structurescomputers on social media!*
+*We’d love to see what you build with Hidden Fruits — tag @structuresComp on social media!*
